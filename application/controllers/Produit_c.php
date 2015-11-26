@@ -112,7 +112,6 @@ class Produit_c extends CI_Controller {
         redirect('/Produit_c/index');
     }
 
-
     public function modifierProduit($id) {
         $this->check_droit(2);
         $this->load->view('head_v');
@@ -122,7 +121,6 @@ class Produit_c extends CI_Controller {
         $this->load->view('admin/produit/form_update_produit_v',$donnees); 
         $this->load->view('foot_v'); 
     }
-
 
     public function validFormModifierProduit() {
         $this->check_droit(2);

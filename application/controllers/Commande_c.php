@@ -24,7 +24,7 @@ class Commande_c extends CI_Controller {
         $this->load->view('foot_v');
     }
 
-    public function afficherCommandes() {
+    public function afficherCommandesAPreparer() {
         $this->check_droit(2);
         $this->load->view('head_v');
         $this->load->view('admin/navAdmin_v');
