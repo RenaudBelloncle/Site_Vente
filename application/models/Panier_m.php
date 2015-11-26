@@ -24,11 +24,11 @@ class Panier_m extends CI_Model {
     }
 
     public function getProduitByPanier($id) {
-        return $this->db->get_where('panier', array('id_panier'=>$id))->row_array();
+        return $this->db->get_where('panier', array('id_panier'=>$id, 'id_commande'=>null))->row_array();
     }
 
     public function getProduitByProduit($idProduit, $idUser) {
-        return $this->db->get_where('panier', array('id_produit'=>$idProduit, 'id_user'=>$idUser))->row_array();
+        return $this->db->get_where('panier', array('id_produit'=>$idProduit, 'id_user'=>$idUser, 'id_commande'=>null))->row_array();
     }
 
     public function updateProduit($id, $donnees) {
