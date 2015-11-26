@@ -12,7 +12,7 @@
                 <a href="#">Gestion des Commandes</a>
                 <ul class="dropdown">
                     <li><a class="SousMenu" href="<?=site_url('Commande_c/afficherCommandesAPreparer');?>">Consulter et Préparer les Commandes</a></li>
-                    <li><a class="SousMenu" href="<?=site_url('Commande_c');?>">Afficher/Editer/Supprimer des Commandes</a></li>
+
                 </ul>
             </li>
             <li class="has-dropdown">
