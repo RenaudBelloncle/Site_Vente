@@ -1,32 +1,35 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="row">
-    <table>
-        <caption>Recapitulatifs des Commandes</caption>
-        <thead>
-        <tr>
-            <th>Client</th>
-            <th>Prix</th>
-            <th>Date d'achat</th>
-            <th>Etat</th>
-            <th>Opération</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php if( $commandes != NULL): ?>
-            <?php foreach ($commandes as $value): ?>
+    <h1>Récapitulatif des commandes</h1>
+    <?php if($commande == NULL): ?>
+        <br>
+        <br>
+        <br>
+        <h4>Il n'y a aucune commande !</h4>
+    <?php endif; ?>
+    <?php if($commande != NULL): ?>
+        <table>
+            <caption><h3>Commandes effectuées</h3></caption>
+            <thead>
+            <tr>
+                <td><div class="shrink columns"><h4>Client</h4></div></td>
+                <td><div class="shrink columns"><h4>Date d'achat</h4></div></td>
+                <td><div class="shrink columns"><h4>Prix de la commande</h4></div></td>
+                <td><div class="shrink columns"><h4>État de la commande</h4></div></td>
+                <td><div class="shrink columns"><h4>Options</h4></div></td>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($commande as $value): ?>
                 <tr>
-                    <td><?=$value->nom." ".$value->prenom;?></td>
-                    <td><?=$value->prix;?></td>
-                    <td><?=$value->date_achat;?></td>
-                    <td><?=$value->libelle;?></td>
-                    <td>
-                        <a href="">Modifier</a>
-                        <a href="">Supprimer</a>
-                    </td>
+                    <td><div class="shrink columns"><h5><?=$value->login;?></h5></div></td>
+                    <td><div class="shrink columns"><h5><?=$value->date_achat;?></h5></div></td>
+                    <td><div class="shrink columns"><h5><?=$value->prix;?></h5></div></td>
+                    <td><div class="shrink columns"><h5><?=$value->libelle;?></h5></div></td>
+                    <td><div class="shrink columns"><h5><a href="" >Détail </a>/<a href="" >Éditer</a>/<a href="" >Supprimer</a></h5></div></td>
                 </tr>
             <?php endforeach; ?>
-        <?php endif; ?>
-        <tbody>
-    </table>
+            </tbody>
+        </table>
+    <?php endif; ?>
 </div>
-<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>

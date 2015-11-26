@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Commande_m extends CI_Model {
 
     public function getAllCommandes() {
-        $this->db->select('u.nom','u.prenom','id_lieu','c.prix','c.date_achat','e.libelle');
+        $this->db->select('*');
         $this->db->from('commande c');
         $this->db->join('user u','c.id_user=u.id_user');
         $this->db->join('etat e','c.id_etat=e.id_etat');
@@ -15,7 +15,7 @@ class Commande_m extends CI_Model {
     }
 
     public function getCommandesAPreparer() {
-        $this->db->select('u.nom','u.prenom','id_lieu','c.prix','c.date_achat','e.libelle');
+        $this->db->select('*');
         $this->db->from('commande c');
         $this->db->join('user u','c.id_user=u.id_user');
         $this->db->join('etat e','c.id_etat=e.id_etat');
