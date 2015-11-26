@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="row">
-    <h1>Récapitulatif des commandes à préparer :</h1>
+    <h1>Récapitulatif des commandes :</h1>
     <?php if($commande == NULL): ?>
         <br>
         <br>
@@ -26,7 +26,11 @@
                     <td><div class="shrink columns"><h5><?=$value->date_achat;?></h5></div></td>
                     <td><div class="shrink columns"><h5><?=$value->prix;?></h5></div></td>
                     <td><div class="shrink columns"><h5><?=$value->libelle;?></h5></div></td>
-                    <td><div class="shrink columns"><h5><a href="" >Préparer</a></h5></div></td>
+                    <td>
+                        <?php if($value->id_etat == 1): ?>
+                        <div class="shrink columns"><h5><a href="<?=site_url('Commande_c/validerCommande')."/".$value->id_commande;?>">Préparer</a></h5></div>
+                        <?php endif; ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

@@ -19,18 +19,8 @@ class Commande_c extends CI_Controller {
         $this->load->view('head_v');
         $this->load->view('admin/navAdmin_v');
         $data['titre'] = "affichage du tableau commandes";
-        $data['commande'] = $this->Commande_m->getAllCommandes();
-        $this->load->view('admin/commande/table_commande_v', $data);
-        $this->load->view('foot_v');
-    }
-
-    public function afficherCommandesAPreparer() {
-        $this->check_droit(2);
-        $this->load->view('head_v');
-        $this->load->view('admin/navAdmin_v');
-        $data['titre'] = "affichage du tableau commandes";
         $data['commande'] = $this->Commande_m->getCommandesAPreparer();
-        $this->load->view('admin/commande/table_commande_preparer_v', $data);
+        $this->load->view('admin/commande/table_commande_v', $data);
         $this->load->view('foot_v');
     }
 
@@ -42,5 +32,13 @@ class Commande_c extends CI_Controller {
         $data['commande'] = $this->Commande_m->getCommandeByUser($this->session->userdata('id_user'));
         $this->load->view('clients/commande/table_commande_v', $data);
         $this->load->view('foot_v');
+    }
+
+    public function validerCommande($idCommande) {
+        $donnees = array(
+            'id_etat' => 2
+        );
+        $this->Commande_m->updateCommande($idCommande,$donnees);
+        redirect('Commande_c');
     }
 }
