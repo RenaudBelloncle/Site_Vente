@@ -33,4 +33,14 @@ class Commande_c extends CI_Controller {
         $this->load->view('admin/commande/table_commande_preparer_v', $data);
         $this->load->view('foot_v');
     }
+
+    public function afficherCommandesClient() {
+        $this->check_droit(1);
+        $this->load->view('head_v');
+        $this->load->view('clients/navClient_v');
+        $data['titre'] = "affichage du tableau commandes";
+        $data['commande'] = $this->Commande_m->getCommandeByUser($this->session->userdata('id_user'));
+        $this->load->view('clients/commande/table_commande_v', $data);
+        $this->load->view('foot_v');
+    }
 }

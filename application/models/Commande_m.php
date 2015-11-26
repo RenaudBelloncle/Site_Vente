@@ -26,6 +26,17 @@ class Commande_m extends CI_Model {
         return $query->result();
     }
 
+    public function getCommandeByUser($id) {
+        $this->db->select('*');
+        $this->db->from('commande c');
+        $this->db->join('etat e','c.id_etat=e.id_etat');
+        $this->db->where('c.id_user', $id);
+        $this->db->order_by('e.id_etat','ASC');
+        $this->db->order_by('c.date_achat','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function addCommande($donnees) {
         return $this->db->insert("commande",$donnees);
     }
