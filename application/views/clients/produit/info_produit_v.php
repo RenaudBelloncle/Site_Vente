@@ -21,38 +21,46 @@
                        <h4>Description du produit :</h4>
                        <br><h5 ><?=$produit["description"]; ?></h5><br>
                        <h4>Quantité :
-                           <?php if( $panier != NULL): ?>
+
                            <?php foreach($panier as $val): ?>
-                           <?php if( $produit["stock"]-$val->quantite <= 0): ?>
-                               <span class="alert round label">Rupture de stock !</span>
+                           <?php endforeach; ?>
+
+                           <?php $test = site_url("Panier_c/isOnPanier")."/".$val->id_produit."/".$produit["id"];?>
+
+                           <?php if ($panier != NULL && $test == True):?>
+
+                               <?php if( $produit["stock"]-$val->quantite <= 0 ): ?>
+                                   <span class="alert round label">Rupture de stock !</span>
+                               <?php endif; ?>
+
+                               <?php if( $produit["stock"]-$val->quantite <= 10 && $produit["stock"]-$val->quantite >0): ?>
+                                   <span class="warning round label">Limité !</span>
+                                   <br><br><br><h4><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a></h4>
+                               <?php endif; ?>
+
+                               <?php if( $produit["stock"]-$val->quantite > 10): ?>
+                                   <span class="success round label">Disponible !</span>
+                                   <br><br><br><h4><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a></h4>
+                               <?php endif; ?>
+
                            <?php endif; ?>
-                           <?php if( $produit["stock"]-$val->quantite <= 10 && $produit["stock"]-$val->quantite >0): ?>
-                               <span class="warning round label">Limité !</span>
-                           <?php endif; ?>
-                           <?php if( $produit["stock"]-$val->quantite > 10): ?>
-                               <span class="success round label">Disponible !</span>
-                           <?php endif; ?>
-                       </h4><br>
-                           <?php if( $panier != NULL && ($produit["stock"] -$val->quantite) > 0 && $produit["id"] == $val->id_produit): ?>
-                               <br><br><br><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a>
-                           <?php endif; ?>
-                       <?php endforeach; ?>
-                       <?php endif; ?>
+
                        <?php if( $panier == NULL): ?>
                            <?php if( $produit["stock"] <= 0): ?>
                                <span class="alert round label">Rupture de stock !</span>
                            <?php endif; ?>
                            <?php if( $produit["stock"] <= 10 && $produit["stock"] >0): ?>
                                <span class="warning round label">Limité !</span>
+                               <br><br><br>
+                               <h4><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a></h4>
                            <?php endif; ?>
                            <?php if( $produit["stock"] > 10): ?>
                                <span class="success round label">Disponible !</span>
+                               <br><br><br>
+                               <h4><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a></h4>
                            <?php endif; ?>
                        <?php endif; ?>
-                       <br><br><br>
-                       <?php if( $panier == NULL && $produit["stock"] != 0 || $panier != NULL && $produit["id"] != $val->id_produit && $produit["stock"] != 0): ?>
-                           <a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a>
-                       <?php endif; ?>
+                       </h4>
                    </div></div>
             </div>
         </li>
