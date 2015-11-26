@@ -5,7 +5,6 @@
         <thead>
         <tr>
             <th>Client</th>
-            <th>Lieu de livraison</th>
             <th>Prix</th>
             <th>Date d'achat</th>
             <th>Etat</th>
@@ -17,7 +16,6 @@
             <?php foreach ($commandes as $value): ?>
                 <tr>
                     <td><?=$value->nom." ".$value->prenom;?></td>
-                    <td><?=$value->id_lieu;?></td>
                     <td><?=$value->prix;?></td>
                     <td><?=$value->date_achat;?></td>
                     <td><?=$value->libelle;?></td>

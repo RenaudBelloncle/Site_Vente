@@ -33,8 +33,4 @@ class Commande_c extends CI_Controller {
         $this->load->view('admin/commande/table_commande_preparer_v', $data);
         $this->load->view('foot_v');
     }
-
-    public function ajouterCommandes(){
-
-    }
 }
