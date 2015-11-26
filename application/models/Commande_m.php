@@ -26,7 +26,11 @@ class Commande_m extends CI_Model {
         return $query->result();
     }
 
-    public function insertCommande($donnees){
+    public function addCommande($donnees) {
         return $this->db->insert("commande",$donnees);
+    }
+
+    public function getCommande($donnees) {
+        return $this->db->get_where('commande', array('id_user'=>$donnees['id_user'], 'prix'=>$donnees['prix'], 'date_achat'=>$donnees['date_achat'], 'id_etat'=>$donnees['id_etat']))->row_array();
     }
 }

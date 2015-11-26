@@ -46,6 +46,6 @@
                 <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="" >Valider Commande</a>
+    <a href="<?=site_url("Panier_c/validerCommande");?>" >Valider Commande</a>
     <?php endif; ?>
 </div>

@@ -97,13 +97,11 @@ INSERT INTO user (id_user,login,password,email,valide,droit) VALUES
 CREATE TABLE IF NOT EXISTS commande (
   id_commande int(11) NOT NULL AUTO_INCREMENT,
   id_user int(11) NOT NULL,
-  id_lieu int(11) NOT NULL,
   prix float(5,2) NOT NULL,
   date_achat date NOT NULL,
   id_etat int(11) NOT NULL,
   PRIMARY KEY (id_commande),
   KEY id_user (id_user),
-  KEY id_lieu (id_lieu),
   KEY id_etat (id_etat)
 ) DEFAULT CHARSET=utf8 ;
 
@@ -117,7 +115,7 @@ CREATE TABLE IF NOT EXISTS panier (
   id_produit int(11) NOT NULL,
   quantite int(11) NOT NULL,
   prix float(5,2) NOT NULL,
-  id_commande int(1),
+  id_commande int(11),
   dateAjoutPanier datetime NOT NULL,
   PRIMARY KEY (id_panier),
   KEY id_user (id_user),

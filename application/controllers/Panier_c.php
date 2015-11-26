@@ -7,7 +7,7 @@ class Panier_c extends CI_Controller {
         $this->load->database();
         $this->load->helper(array('form','url','text','string'));
         $this->load->library(array('session','form_validation','email'));
-        $this->load->model(array('Panier_m','Users_m','Produit_m'));
+        $this->load->model(array('Panier_m','Users_m','Produit_m','Commande_m'));
     }
 
     public function check_droit($droit) {
@@ -38,7 +38,7 @@ class Panier_c extends CI_Controller {
             'id_produit' => $produit['id'],
             'quantite' => 1,
             'prix' => $produit['prix'],
-            'dateAjoutPanier' => date_default_timezone_get()
+            'dateAjoutPanier' => date("Y-m-d H:i:s")
         );
         $this->Panier_m->addToPanier($donnees);
         redirect('Produit_c/afficherProduitsClients');
@@ -65,7 +65,8 @@ class Panier_c extends CI_Controller {
             $produit = $this->Produit_m->getProduitById($panier['id_produit']);
             $donnees = array(
                 'quantite' => $panier['quantite']+1,
-                'prix' => $panier['prix'] + $produit['prix']
+                'prix' => $panier['prix'] + $produit['prix'],
+                'dateAjoutPanier' => date("Y-m-d H:i:s")
             );
             $this->Panier_m->updateProduit($id, $donnees);
         }
@@ -86,10 +87,43 @@ class Panier_c extends CI_Controller {
                 $donnees = array(
                     'id_user' => $this->session->userdata('id_user'),
                     'quantite' => $panier['quantite'] - 1,
-                    'prix' => $panier['prix'] - $produit['prix']
+                    'prix' => $panier['prix'] - $produit['prix'],
+                    'dateAjoutPanier' => date("Y-m-d H:i:s")
                 );
                 $this->Panier_m->updateProduit($id, $donnees);
             }
+        }
+        redirect('Panier_c');
+    }
+
+    public function validerCommande() {
+        $this->check_droit(1);
+        $panier = $this->Panier_m->getPanier($this->session->userdata('id_user'));
+        $prix = 0;
+        foreach($panier as $value) {
+            $produit = $this->Produit_m->getProduitById($value->id_produit);
+            if ($value->quantite > $produit["stock"]) redirect('Panier_c');
+            $prix = $prix + $value->prix;
+        }
+        $donneeCommande = array(
+            'id_user' => $this->session->userdata('id_user'),
+            'prix' => $prix,
+            'date_achat' => date("Y-m-d"),
+            'id_etat' => 1
+        );
+        $this->Commande_m->addCommande($donneeCommande);
+        $commande = $this->Commande_m->getCommande($donneeCommande);
+        foreach($panier as $value) {
+            $donneeProduit = array(
+                'id_commande' => $commande['id_commande']
+            );
+            $this->Panier_m->updateProduit($value->id_panier,$donneeProduit);
+
+            $produit = $this->Produit_m->getProduitById($value->id_produit);
+            $donneeProduit = array(
+                'stock' => $produit['stock'] - $value->quantite
+            );
+            $this->Produit_m->updateProduit($value->id_produit,$donneeProduit);
         }
         redirect('Panier_c');
     }
