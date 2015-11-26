@@ -50,6 +50,14 @@ class Panier_c extends CI_Controller {
         redirect('Panier_c');
     }
 
+    public function isOnPanier($panier, $id){
+        foreach($panier as $val):
+            if($val->id_produit == $id):
+                return True;
+                endif;
+        endforeach;
+        }
+
     public function addQuantite($id, $redir) {
         $this->check_droit(1);
         if(is_numeric($id)) {

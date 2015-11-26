@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS produit (
   photo varchar(50) DEFAULT NULL,
   dispo tinyint(4) NOT NULL,
   stock int(11) NOT NULL,
-  description varchar(50) DEFAULT NULL,
+  description varchar(500) DEFAULT NULL,
   PRIMARY KEY (id),
   KEY id_type (id_type),
   CONSTRAINT produit_fk_1 FOREIGN KEY (id_type) REFERENCES typeProduit (id_type)
@@ -47,8 +47,7 @@ CREATE TABLE IF NOT EXISTS produit (
 INSERT INTO produit (id,id_type,nom,prix,photo,dispo,stock, description) VALUES
   (1,1, 'Catwoman','139.99','Figurine_Catwoman.jpg',0,0,'Je suis une description'),
 (2,1, 'Batman','89.99','Figurine_Batman.jpg',1,3,'Je suis une description'),
-
-(3,1, 'Joker','109.99','Figurine_Joker.jpg',1,3,'Je suis une description'),
+(3,1, 'Joker','109.99','Figurine_Joker.jpg',1,3,''),
 (4,1, 'Flash','79.99','Figurine_Flash.jpg',1,8,'Je suis une description'),
 (6,1, 'Rorschach','89.99','Figurine_Rorcha.jpg',1,2,'Je suis une description'),
 (7,1, 'Garrus','59.99','Figurine_Garrus.jpg',1,1,'Je suis une description'),

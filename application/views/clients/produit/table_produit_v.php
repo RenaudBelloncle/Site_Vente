@@ -17,38 +17,6 @@
                                         <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
                                     <h4><?=$value->nom; ?></h4>
 
-                                    <?php if($panier != NULL):?>
-                                        <?php foreach($panier as $val): ?>
-                                            <?php if($value->id == $val->id_produit): ?>
-                                                <?php if($value->stock -$val->quantite > 0): ?>
-                                                <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier !!!</a>
-                                                <?php endif; ?>
-                                                <?php if( $value->stock -$val->quantite <= 0): ?>
-                                                    <span class="alert round label">Rupture de stock !</span>
-                                                <?php endif; ?>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-
-                                        <?php if($value->id != $val->id_produit): ?>
-                                            <?php if($value->stock > 0): ?>
-                                                <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier</a>
-                                            <?php endif; ?>
-                                            <?php if( $value->stock <= 0): ?>
-                                                <span class="alert round label">Rupture de stock !</span>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-
-                                    <?php endif; ?>
-
-                                    <?php if($panier == NULL):?>
-                                        <?php if( $value->stock > 0): ?>
-                                            <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier</a>
-                                        <?php endif; ?>
-                                        <?php if( $value->stock <= 0): ?>
-                                            <span class="alert round label">Rupture de stock !</span>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-
                                 </div>
                             </div>
                         </li>
@@ -67,20 +35,6 @@
                                         <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
                                     <h4><?=$value->nom; ?></h4>
 
-                                    <?php foreach($panier as $val): ?>
-                                        <?php if( $panier != NULL && ($value->stock -$val->quantite) > 0 && $value->id == $val->id_produit): ?>
-                                            <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier</a>
-                                        <?php endif; ?>
-
-                                        <?php if( $panier == NULL && $value->stock != 0 || $panier != NULL && $value->id != $val->id_produit && $value->stock != 0): ?>
-                                            <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier</a>
-                                        <?php endif; ?>
-
-                                        <?php if( $value->stock-$val->quantite <= 0): ?>
-                                            <span class="alert round label">Rupture de stock !</span>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
-
                                 </div>
                             </div>
                         </li>
@@ -98,20 +52,6 @@
                                     <a class="custom-thumbnail-class" href="<?=site_url("Produit_c/infoProduitClient")."/".$value->id;?>">
                                         <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
                                     <h4><?=$value->nom; ?></h4>
-
-                                    <?php foreach($panier as $val): ?>
-                                        <?php if( $panier != NULL && ($value->stock -$val->quantite) > 0 && $value->id == $val->id_produit): ?>
-                                            <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier</a>
-                                        <?php endif; ?>
-
-                                    <?php if( $panier == NULL && $value->stock != 0 || $panier != NULL && $value->id != $val->id_produit && $value->stock != 0): ?>
-                                        <a href="<?=site_url("Panier_c/addToPanier")."/".$value->id;?>" >Ajouter au Panier</a>
-                                    <?php endif; ?>
-
-                                    <?php if( $value->stock-$val->quantite <= 0): ?>
-                                        <span class="alert round label">Rupture de stock !</span>
-                                    <?php endif; ?>
-                                    <?php endforeach; ?>
 
                                 </div>
                             </div>
