@@ -12,7 +12,7 @@
             <li class="has-dropdown">
                 <a href="#">Mon Compte</a>
                 <ul class="dropdown">
-                    <li><a href="">Consulter mes Commandes</a></li>
+                    <li><a href="<?=site_url("Commande_c/afficherCommandesClient");?>">Consulter mes Commandes</a></li>
                     <li><a href="">Modifier mes Coordonnées</a></li>
                 </ul>
             </li>
