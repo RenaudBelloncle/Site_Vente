@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="row">
     <table>
-        <caption>Recapitulatifs des Commandes</caption>
+        <caption>Recapitulatifs des Commandes à Préparer</caption>
         <thead>
         <tr>
             <th>Client</th>

@@ -19,7 +19,7 @@ class Commande_m extends CI_Model {
         $this->db->from('commande c');
         $this->db->join('user u','c.id_user=u.id_user');
         $this->db->join('etat e','c.id_etat=e.id_etat');
-        $this->db->where('u.id_etat',1);
+        $this->db->where('e.id_etat',1);
         $this->db->order_by('e.id_etat','ASC');
         $this->db->order_by('c.date_achat','DESC');
         $query = $this->db->get();

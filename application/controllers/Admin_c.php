@@ -13,8 +13,8 @@ class Admin_c extends CI_Controller {
     public function index() {
         if($this->session->userdata('droit')!=2) redirect('Users_c');
         $this->load->view('head_v');
-        $this->load->view('admin/navAdmin_v');  
-        $donnees['titre']="gestion des clients et des commandes";
+        $this->load->view('admin/navAdmin_v');
+        $donnees['titre']="Gestion des commandes et des Produits";
         $this->load->view('admin/admin_index',$donnees);
         $this->load->view('foot_v');
     }
