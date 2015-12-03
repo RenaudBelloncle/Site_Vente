@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS etat (
 ) DEFAULT CHARSET=utf8 ;
 -- Contenu de la table etat
 INSERT INTO etat (id_etat, libelle) VALUES
-(1, 'A préparer'),
-(2, 'Expédié');
+(1, 'À préparer'),
+(2, 'Expédiée');
 
 -- --------------------------------------------------------
 -- Structure de la table produit

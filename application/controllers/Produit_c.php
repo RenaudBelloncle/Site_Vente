@@ -30,8 +30,25 @@ class Produit_c extends CI_Controller {
         $this->load->view('clients/navClient_v');
         $data['titre']="affichage du tableau produit";
         $data['produit']=$this->Produit_m->getAllProduits();
-        $data['panier'] = $this->Panier_m->getPanier($this->session->userdata('id_user'));
         $this->load->view('clients/produit/table_produit_v',$data);
+        $this->load->view('foot_v');
+    }
+
+    public function afficherType($id_type){
+        $this->check_droit(1);
+        $this->load->view('head_v');
+        $this->load->view('clients/navClient_v');
+        $data['titre']="affichage du tableau produit";
+        $data['produit']=$this->Produit_m->getAllProduitsByType($id_type);
+        if ($id_type == 1):
+            $this->load->view('clients/produit/figurine_v',$data);
+            endif;
+        if ($id_type == 2):
+            $this->load->view('clients/produit/peluche_v',$data);
+        endif;
+        if ($id_type == 3):
+            $this->load->view('clients/produit/poster_v',$data);
+        endif;
         $this->load->view('foot_v');
     }
 
@@ -110,6 +127,43 @@ class Produit_c extends CI_Controller {
         $this->check_droit(2);
         if(is_numeric($id)) $this->Produit_m->deleteProduit($id);
         redirect('/Produit_c/index');
+    }
+
+    public function reapprovisionner($id){
+        $this->check_droit(2);
+        $this->load->view('head_v');
+        $this->load->view('admin/navAdmin_v');
+        $donnees=$this->Produit_m->getProduitById($id);
+        $this->load->view('admin/produit/reapprovisionnement_v',$donnees);
+        $this->load->view('foot_v');
+    }
+
+    public function validFormReapprovisionner(){
+        $this->check_droit(2);
+        $id=$this->input->post('id');
+
+        $donnees= array(
+            'stock'=>$this->input->post('stock')
+        );
+
+        $this->form_validation->set_rules('id','id','trim|numeric');
+        $this->form_validation->set_rules('stock', 'stock', 'trim|required|numeric');
+        $this->form_validation->set_error_delimiters('<span class="error">','</span>');
+
+        $donnees= array(
+            'stock'=>$this->input->post('stock')
+        );
+
+        if($this->form_validation->run() == False){
+            $this->load->view('head_v');
+            $this->load->view('admin/navAdmin_v');
+            $donnees['id']=$id;
+            $this->load->view('admin/produit/reapprovisionnement_v',$donnees);
+            $this->load->view('foot_v');
+        } else {
+            $this->Produit_m->updateProduit($id,$donnees);
+            redirect('Produit_c/index');
+        }
     }
 
     public function modifierProduit($id) {
