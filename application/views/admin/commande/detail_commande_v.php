@@ -26,5 +26,5 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-    <a class="right" href="<?=site_url("Commande_c/afficherCommandesClient");?>" >Retour</a>
+    <a class="right" href="<?=site_url('Commande_c');?>" >Retour</a>
 </div>

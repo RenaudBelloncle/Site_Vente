@@ -24,7 +24,7 @@
                     <td><div class="shrink columns"><h5><?=$value->date_achat;?></h5></div></td>
                     <td><div class="shrink columns"><h5><?=$value->prix;?></h5></div></td>
                     <td><div class="shrink columns"><h5><?=$value->libelle;?></h5></div></td>
-                    <td><div class="shrink columns"><h5><a href="" >Détail de la commande</a></h5></div></td>
+                    <td><div class="shrink columns"><h5><a href="<?=site_url('Commande_c/afficherDetailsCommandeClient')."/".$value->id_commande;?>">Détails de la commande</a></h5></div></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

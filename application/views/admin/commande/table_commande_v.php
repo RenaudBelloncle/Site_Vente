@@ -28,7 +28,8 @@
                     <td><div class="shrink columns"><h5><?=$value->libelle;?></h5></div></td>
                     <td>
                         <?php if($value->id_etat == 1): ?>
-                        <div class="shrink columns"><h5><a href="<?=site_url('Commande_c/validerCommande')."/".$value->id_commande;?>">Préparer</a></h5></div>
+                            <div class="shrink columns"><h5><a href="<?=site_url('Commande_c/validerCommande')."/".$value->id_commande;?>">Préparer</a></h5></div>
+                            <div class="shrink columns"><h5><a href="<?=site_url('Commande_c/afficherDetailsCommande')."/".$value->id_commande;?>">Détails</a></h5></div>
                         <?php endif; ?>
                     </td>
                 </tr>
