@@ -46,4 +46,8 @@ class Panier_m extends CI_Model {
         $this->db->where("id_panier",$id);
         $this->db->update("panier", $donnees);
     }
+
+    public function deletePanier($idUser) {
+        $this->db->delete("panier", array("id_user"=>$idUser, "id_commande"=>null));
+    }
 }

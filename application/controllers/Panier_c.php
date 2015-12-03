@@ -51,10 +51,8 @@ class Panier_c extends CI_Controller {
     }
 
     public function viderPanier(){
-        $panier = $this->Panier_m->getPanier($this->session->userdata('id_user'));
-        foreach ($panier as $val):
-            $this->deleteProduit($val->id);
-        endforeach;
+        $this->Panier_m->deletePanier($this->session->userdata('id_user'));
+        redirect('Panier_c');
     }
 
     public function isOnPanier($panier, $id){
