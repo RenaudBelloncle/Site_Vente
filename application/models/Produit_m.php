@@ -14,6 +14,17 @@ class Produit_m extends CI_Model {
         return $query->result();
     }
 
+    public function getAllProduitsByType($id_type) {
+        $this->db->select('p.id, t.libelle, p.nom, p.prix, p.photo, p.stock');
+        $this->db->from('produit p');
+        $this->db->join('typeProduit t', 'p.id_type=t.id_type');
+        $this->db->where('p.id_type', $id_type);
+        $this->db->order_by('t.libelle', 'ASC');
+        $this->db->order_by('p.nom', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function insertProduit($donnees) {
         return $this->db->insert("produit",$donnees);
     }

@@ -32,34 +32,3 @@
 		</fieldset>
 	</div>
 </form>
-<div class="row">
-	<fieldset>
-		<?php
-		echo form_open("Produit_c/validFormModifierProduit")."\n";
-		echo form_hidden('id',$id);
-		echo form_label('Nom : ', 'nom');
-		echo form_input('nom',set_value('nom',$nom))."\n";
-		echo form_error('nom','<span class="error">',"</span>");
-
-		echo form_label('type produit : ', 'id_type');
-		echo form_dropdown('id_type', $typeProduit,$id_type);
-		echo form_error('id_type','<span class="error">',"</span>");
-		echo form_label('prix : ', 'prix');
-		$data = array(
-			'name' => 'prix',
-			'value' => set_value('prix',$prix)
-		);
-		echo form_input($data).'<br>';
-		echo form_error('prix');
-
-		echo form_label('photo : ', 'photo');
-		echo form_input('photo',set_value('photo',$photo))."\n";
-		echo form_error('photo');
-
-		echo "<br>";
-		echo form_submit("ModifierProduit", "Modifier")."\n";
-		echo form_close()."\n";
-
-		?>
-	</fieldset>
-</div>
