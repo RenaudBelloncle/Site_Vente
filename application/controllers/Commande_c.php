@@ -7,7 +7,7 @@ class Commande_c extends CI_Controller {
         $this->load->database();
         $this->load->helper(array('form', 'url', 'text', 'string'));
         $this->load->library(array('session', 'form_validation', 'email'));
-        $this->load->model(array('Commande_m', 'Users_m'));
+        $this->load->model(array('Commande_m', 'Users_m', 'Produit_m', 'Panier_m'));
     }
 
     public function check_droit($droit) {
@@ -35,6 +35,19 @@ class Commande_c extends CI_Controller {
     }
 
     public function validerCommande($idCommande) {
+        $this->check_droit(2);
+        $produitCommande = $this->Panier_m->getProduitByCommande($idCommande);
+        foreach ($produitCommande as $value) {
+            $produit = $this->Produit_m->getProduitById($value->id_produit);
+            if ($value->quantite > $produit["stock"]) redirect('Commande_c');
+        }
+        foreach ($produitCommande as $value) {
+            $produit = $this->Produit_m->getProduitById($value->id_produit);
+            $donneeProduit = array(
+                'stock' => $produit['stock'] - $value->quantite
+            );
+            $this->Produit_m->updateProduit($value->id_produit,$donneeProduit);
+        }
         $donnees = array(
             'id_etat' => 2
         );

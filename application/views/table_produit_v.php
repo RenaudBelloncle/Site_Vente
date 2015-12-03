@@ -10,8 +10,7 @@
                 <?php if ($value->libelle == 'Figurine'): ?>
                     <li><div class="row">
                             <div class="panel clearfix">
-                                <a class="custom-thumbnail-class" href="<?=site_url("Produit_c/infoProduit")."/".$value->id;?>">
-                                    <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
+                                <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"><br>
                                 <h4><?=$value->nom; ?></h4>
                             </div>
                         </div>
@@ -27,8 +26,7 @@
                 <?php if ($value->libelle == 'Peluche'): ?>
                     <li><div class="row">
                             <div class="panel clearfix">
-                                <a class="custom-thumbnail-class" href="<?=site_url("Produit_c/infoProduit")."/".$value->id;?>">
-                                    <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
+                                <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"><br>
                                 <h4><?=$value->nom; ?></h4>
                             </div>
                         </div>
@@ -44,8 +42,7 @@
                 <?php if ($value->libelle == 'Poster'): ?>
                     <li><div class="row">
                             <div class="panel clearfix">
-                                <a class="custom-thumbnail-class" href="<?=site_url("Produit_c/infoProduit")."/".$value->id;?>">
-                                    <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
+                                <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"><br>
                                 <h4><?=$value->nom; ?></h4>
                             </div>
                         </div>
