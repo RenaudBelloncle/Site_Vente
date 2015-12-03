@@ -25,12 +25,12 @@
                            <?php if( $produit["stock"] <= 0): ?>
                                <span class="alert round label">Rupture de stock !</span>
                            <?php endif; ?>
-                           <?php if( $produit["stock"] <= 10 && $produit["stock"] >0): ?>
+                           <?php if( $produit["stock"] <= 5 && $produit["stock"] >0): ?>
                                <span class="warning round label">Limité !</span>
                                <br><br><br>
                                <h4><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a></h4>
                            <?php endif; ?>
-                           <?php if( $produit["stock"] > 10): ?>
+                           <?php if( $produit["stock"] > 5): ?>
                                <span class="success round label">Disponible !</span>
                                <br><br><br>
                                <h4><a href="<?=site_url("Panier_c/addToPanier")."/".$produit["id"];?>" >Ajouter au Panier</a></h4>

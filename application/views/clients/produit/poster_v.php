@@ -13,7 +13,7 @@
                     <li><div class="row">
                             <div class="panel clearfix">
                                 <a class="custom-thumbnail-class" href="<?=site_url("Produit_c/infoProduitClient")."/".$value->id;?>">
-                                    <img src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
+                                    <img style="height:400px;width:300px" src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></a><br>
                                 <h4><?=$value->nom; ?></h4>
 
                             </div>
