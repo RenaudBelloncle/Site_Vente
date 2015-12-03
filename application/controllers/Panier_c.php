@@ -51,10 +51,8 @@ class Panier_c extends CI_Controller {
     }
 
     public function viderPanier(){
-        $panier = $this->Panier_m->getPanier($this->session->userdata('id_user'));
-        foreach ($panier as $val):
-            $this->deleteProduit($val->id);
-        endforeach;
+        $this->Panier_m->deletePanier($this->session->userdata('id_user'));
+        redirect('Panier_c');
     }
 
     public function isOnPanier($panier, $id){
@@ -108,8 +106,6 @@ class Panier_c extends CI_Controller {
         $panier = $this->Panier_m->getPanier($this->session->userdata('id_user'));
         $prix = 0;
         foreach($panier as $value) {
-            $produit = $this->Produit_m->getProduitById($value->id_produit);
-            if ($value->quantite > $produit["stock"]) redirect('Panier_c');
             $prix = $prix + $value->prix;
         }
         $donneeCommande = array(
@@ -118,19 +114,12 @@ class Panier_c extends CI_Controller {
             'date_achat' => date("Y-m-d"),
             'id_etat' => 1
         );
-        $this->Commande_m->addCommande($donneeCommande);
-        $commande = $this->Commande_m->getCommande($donneeCommande);
+        $idcommande = $this->Commande_m->addCommande($donneeCommande);
         foreach($panier as $value) {
             $donneeProduit = array(
-                'id_commande' => $commande['id_commande']
+                'id_commande' => $idcommande
             );
             $this->Panier_m->updateProduit($value->id_panier,$donneeProduit);
-
-            $produit = $this->Produit_m->getProduitById($value->id_produit);
-            $donneeProduit = array(
-                'stock' => $produit['stock'] - $value->quantite
-            );
-            $this->Produit_m->updateProduit($value->id_produit,$donneeProduit);
         }
         redirect('Panier_c');
     }

@@ -31,8 +31,23 @@ class Panier_m extends CI_Model {
         return $this->db->get_where('panier', array('id_produit'=>$idProduit, 'id_user'=>$idUser, 'id_commande'=>null))->row_array();
     }
 
+    public function getProduitByCommande($idCommande) {
+        $this->db->select('pa.id_panier, pa.id_produit, pa.quantite, p.nom, t.libelle, p.photo, pa.prix, pa.dateAjoutPanier');
+        $this->db->from('panier pa');
+        $this->db->join('produit p', 'pa.id_produit=p.id');
+        $this->db->join('typeProduit t', 'p.id_type=t.id_type');
+        $this->db->where('pa.id_commande', $idCommande);
+        $this->db->order_by('pa.id_panier', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function updateProduit($id, $donnees) {
         $this->db->where("id_panier",$id);
         $this->db->update("panier", $donnees);
+    }
+
+    public function deletePanier($idUser) {
+        $this->db->delete("panier", array("id_user"=>$idUser, "id_commande"=>null));
     }
 }

@@ -25,14 +25,11 @@
                 <?php foreach($panier as $value): ?>
                     <tr>
                         <td><div class="shrink columns">
-                            <h4><a href="<?=site_url("Panier_c/delQuantite")."/".$value->id_panier;?>" >-</a>
-                            <?=$value->quantite?>
-
-                                <?php foreach($produit as $val): ?>
-                                <?php if($val->stock > $value->quantite && $val->id== $value->id_produit): ?>
-                                    <a href="<?=site_url("Panier_c/addQuantite")."/".$value->id_panier."/1";?>" >+</a></h4>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
+                            <h4>
+                                <a href="<?=site_url("Panier_c/delQuantite")."/".$value->id_panier;?>" >-</a>
+                                <?=$value->quantite?>
+                                <a href="<?=site_url("Panier_c/addQuantite")."/".$value->id_panier."/1";?>" >+</a>
+                            </h4>
                             </div></td>
                        <td> <div class="shrink columns"><h5><?=$value->nom?></h5></div></td>
                         <td><div class="shrink columns"><h5><?=$value->libelle?></h5></div></td>
