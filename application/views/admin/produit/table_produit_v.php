@@ -20,7 +20,7 @@
 					<td><?=$value->libelle; ?></td>
 					<td><?=$value->nom; ?></td>
 					<td><?=$value->prix; ?></td>
-                    <td><?=$value->stock; ?></td>
+					<td><?=$value->stock; ?></td>
 					<td><img style="width:40px;height:40px" src="<?=base_url();?>images/<?=$value->photo; ?>" alt="image de <?=$value->libelle; ?>"></td>
 					<td><?php if ($value->stock <=5): ?>
 							À réapprovisionner
@@ -39,4 +39,3 @@
 		<tbody>
 	</table>
 </div>
-<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>

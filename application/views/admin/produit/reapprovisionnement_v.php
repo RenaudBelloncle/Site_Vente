@@ -21,17 +21,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                        <tr>
-                            <td><?=set_value('nom',$nom);?></td>
-                            <td><?=set_value('id_type',$id_type);?></td>
-                            <td><?=set_value('prix',$prix);?></td>
-                            <td><?=set_value('stock',$stock);?></td>
-                            <td><img style="width:40px;height:40px" src="<?=base_url();?>images/<?=set_value('photo',$photo);?>"></td>
-                            <td>
-                                <label><input name="stock"  type="text"  size="5"  value="<?=set_value('stock',$stock);?>"/>
-                                <?=form_error('stock');?></label>
-                            </td>
-                        </tr>
+                <tr>
+                    <td><?=set_value('nom',$nom);?></td>
+                    <td><?=set_value('id_type',$id_type);?></td>
+                    <td><?=set_value('prix',$prix);?></td>
+                    <td><?=set_value('stock',$stock);?></td>
+                    <td><img style="width:40px;height:40px" src="<?=base_url();?>images/<?=set_value('photo',$photo);?>"></td>
+                    <td>
+                        <label><input name="stock"  type="text"  size="5"  value="<?=set_value('stock',$stock);?>"/>
+                            <?=form_error('stock');?></label>
+                    </td>
+                </tr>
                 <tbody>
             </table>
             <input type="submit" name="Remplir le stock" value="Remplir le stock" />

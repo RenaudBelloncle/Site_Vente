@@ -12,7 +12,7 @@
 				<select name="id_type">
 					<?php foreach($typeProduit  as $key=>$value): ?>
 						<option value="<?=$key; ?>"
-							<?php if(isset($id_type) and $id_type==$key): ?>selected="selected"<?php endif; ?>>
+								<?php if(isset($id_type) and $id_type==$key): ?>selected="selected"<?php endif; ?>>
 							<?=$value; ?>
 						</option>
 					<?php endforeach; ?>

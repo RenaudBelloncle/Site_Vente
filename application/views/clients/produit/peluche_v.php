@@ -21,7 +21,6 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-
     <?php endif; ?>
     <tbody>
 </div>
