@@ -4,7 +4,7 @@
 	<div class="row">
 		<fieldset>
 			<legend>Modifier un produit</legend>
-			<input name="id"  type="hidden" value="<?php if(isset($id)) echo $id; ?>"/>
+			<input name="id" type="hidden" value="<?php if(isset($id)) echo $id; ?>"/>
 			<label>Nom
 				<input name="nom"  type="text"  size="18" 	value="<?=set_value('nom',$nom);?>"/>
 				<?= form_error('nom');?>

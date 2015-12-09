@@ -13,7 +13,7 @@ class Users_m extends CI_Model {
                 FROM user
                 WHERE login=\"".$donnees['login']."\"
                 AND password=\"".$donnees['pass']."\";";
-        $query=$this->db->query($sql);  //id_droit as
+        $query=$this->db->query($sql);
         if($query->num_rows()==1) {
             $row=$query->result_array();
             $donnees_resultat=$row[0];
@@ -33,5 +33,14 @@ class Users_m extends CI_Model {
     public function modif_email_mdp($email,$donnees) {
         $this->db->where("email", $email);
         $this->db->update("user", $donnees);
+    }
+
+    public function getUserById($id_user) {
+        return $this->db->get_where('user', array('id_user' => $id_user))->row_array();
+    }
+
+    public function updateCompte($id, $donnees) {
+        $this->db->where("id_user", $id);
+        $this->db->update("user", $donnees['user']);
     }
 }

@@ -18,16 +18,17 @@
             </li>
             <li><a href="<?=site_url("Panier_c");?>">Mon Panier</a></li>
             <li class="has-dropdown">
-                <a href="#">Mon Compte</a>
+                <a href="<?=site_url("Client_c/afficherCompte");?>">Mon Compte</a>
                 <ul class="dropdown">
                     <li><a href="<?=site_url("Commande_c/afficherCommandesClient");?>">Consulter mes Commandes</a></li>
-                    <li><a href="">Modifier mes Coordonnées</a></li>
+                    <li><a href="<?=site_url("Client_c/modifierCompte");?>">Modifier mes Coordonnées</a></li>
                 </ul>
             </li>
 
         </ul>
         <ul class="right">
-            <li class="name"><h1>Bonjour <?=$this->session->userdata('login')?></h1><li>
+            <li class="name"><h1>Bonjour
+                    <?=$this->session->userdata('login')?></h1><li>
             <li><a href="<?=site_url('users_c/deconnexion');?>">Déconnexion</a></li>
         </ul>
     </section>
