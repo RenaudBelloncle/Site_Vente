@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Users_c extends CI_Controller {
 
@@ -27,20 +27,18 @@ class Users_c extends CI_Controller {
         $this->load->view('head_v');
         $this->load->view('nav_v');
         $this->load->view('form_connexion_v');
-        $this->load->view('foot_v');       
+        $this->load->view('foot_v');
     }
 
     public function form_valid_connexion() {
         $this->check_droit();
         $this->form_validation->set_rules('login','login','trim|required');
         $this->form_validation->set_rules('pass','Mot de passe','trim|required');
-
         $donnees= array(
             'login'=>$this->input->post('login'),
             'pass'=>$this->input->post('pass')
         );
-
-        if($this->form_validation->run() == False){   
+        if($this->form_validation->run() == False){
             $this->load->view('head_v');
             $this->load->view('nav_v');
             $this->load->view('form_connexion_v',$donnees);
@@ -57,14 +55,13 @@ class Users_c extends CI_Controller {
                 $this->load->view('form_connexion_v',$donnees);
                 $this->load->view('foot_v');
             }
-        }      
+        }
     }
 
     public function deconnexion() {
         $this->session->sess_destroy();
         redirect('Users_c');
     }
-
 
     public function inscription() {
         $this->check_droit();
@@ -80,25 +77,23 @@ class Users_c extends CI_Controller {
         $this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('pass','Mot de passe','trim|required|matches[pass2]');
         $this->form_validation->set_rules('pass2','Mot de passe','trim|required');
-
         $donnees= array(
             'login'=>$this->input->post('login'),
             'email'=>$this->input->post('email'),
             'pass'=>$this->input->post('pass')   // encryptage MD5 ou autre à faire
         );
-
         if($this->form_validation->run() == False){
             $this->load->view('head_v');
             $this->load->view('nav_v');
             $donnees['titre']="inscription";
             $this->load->view('users_inscription',$donnees);
-            $this->load->view('foot_v');   
+            $this->load->view('foot_v');
         } else {
             $donnees['droit']=1;
             $donnees['valide']=0;
             $this->Users_m->add_user($donnees);
             redirect(base_url());
-        }  
+        }
     }
 
     public function mdp_oublie() {
@@ -118,11 +113,9 @@ class Users_c extends CI_Controller {
 
     public function validFormMdpOublie() {
         $this->form_validation->set_rules('email','Email','trim|required|valid_email||callback_check_email');
-
         $donnees= array(
             'email'=>$this->input->post('email')
         );
-
         if($this->form_validation->run() == False){
             $this->load->view('head_v');
             $this->load->view('nav_v');
@@ -139,6 +132,6 @@ class Users_c extends CI_Controller {
             $data['pass']=$motdepasse;
             $this->Users_m->modif_email_mdp($donnees['email'],$data);
             redirect(base_url());
-        }          
+        }
     }
 }

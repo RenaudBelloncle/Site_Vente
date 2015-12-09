@@ -1,10 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-
 <div class="row">
     <h1>Recapitulatifs des produits</h1>
     <tbody>
     <?php if( $produit != NULL): ?>
-
         <h2>Posters</h2>
         <hr>
         <div class="large-block-grid-3 medium-block-grid-2 large">
@@ -22,7 +20,6 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-
     <?php endif; ?>
     <tbody>
 </div>

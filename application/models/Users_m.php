@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Users_m extends CI_Model {
 
@@ -11,8 +11,8 @@ class Users_m extends CI_Model {
     public function verif_connexion($donnees) {
         $sql = "SELECT id_user,droit,login,email,valide
                 FROM user
-                WHERE login=\"".$donnees['login']."\"
-                AND password=\"".$donnees['pass']."\";";
+                WHERE login=".$donnees['login']."
+                AND password=".$donnees['pass'].";";
         $query=$this->db->query($sql);
         if($query->num_rows()==1) {
             $row=$query->result_array();

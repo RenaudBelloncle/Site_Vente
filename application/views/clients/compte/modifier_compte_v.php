@@ -35,8 +35,8 @@
                 <?= form_error('login');?>
             </label>
             <label>Mot de passe
-            <input name="password"  type="text"  size="18" 	value="<?=set_value('password',$user['password']);?>"/>
-            <?= form_error('password');?>
+                <input name="password"  type="text"  size="18" 	value="<?=set_value('password',$user['password']);?>"/>
+                <?= form_error('password');?>
             </label>
             <label>Email
                 <input name="email"  type="text"  size="18" 	value="<?=set_value('email',$user['email']);?>"/>

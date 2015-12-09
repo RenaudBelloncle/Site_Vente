@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Panier_c extends CI_Controller {
 
@@ -59,9 +59,10 @@ class Panier_c extends CI_Controller {
         foreach($panier as $val):
             if($val->id_produit == $id):
                 return True;
-                endif;
+            endif;
         endforeach;
-        }
+        return False;
+    }
 
     public function addQuantite($id, $redir) {
         $this->check_droit(1);

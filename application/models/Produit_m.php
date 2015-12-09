@@ -1,6 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Produit_m extends CI_Model {
 
@@ -49,12 +47,12 @@ class Produit_m extends CI_Model {
     }
 
     function getTypeProduitDropdown(){
-        $result = $this->db->from("typeProduit")->order_by('id_type')->get(); 
-        $retour = array(); 
-        if($result->num_rows() > 0){ 
-            $retour[''] = 'selectionner un type'; 
+        $result = $this->db->from("typeProduit")->order_by('id_type')->get();
+        $retour = array();
+        if($result->num_rows() > 0){
+            $retour[''] = 'selectionner un type';
             foreach($result->result_array() as $row) $retour[$row['id_type']] = $row['libelle'];
-        } 
+        }
         return $retour;
     }
 }

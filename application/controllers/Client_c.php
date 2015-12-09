@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Client_c extends CI_Controller {
 
@@ -38,7 +38,6 @@ class Client_c extends CI_Controller {
 
     public function validFormModifierCompte() {
         $id = $this->input->post('id_user');
-
         $donnees['user']= array(
             'login'=>$this->input->post('login'),
             'code_postal'=>$this->input->post('code_postal'),
@@ -49,7 +48,6 @@ class Client_c extends CI_Controller {
             'ville'=>$this->input->post('ville'),
             'password'=>$this->input->post('password')
         );
-
         $this->form_validation->set_rules('id_user','id_user','trim|numeric');
         $this->form_validation->set_rules('nom','nom','trim|min_length[2]|max_length[12]');
         $this->form_validation->set_rules('prenom','prenom','trim|min_length[2]|max_length[12]');
@@ -60,7 +58,6 @@ class Client_c extends CI_Controller {
         $this->form_validation->set_rules('ville','ville','trim|min_length[2]|max_length[20]');
         $this->form_validation->set_rules('code_postal', 'code_postal', 'trim|numeric|min_length[5]|max_length[5]');
         $this->form_validation->set_error_delimiters('<span class="error">','</span>');
-
         $donnees['user']= array(
             'login'=>$this->input->post('login'),
             'code_postal'=>$this->input->post('code_postal'),
@@ -71,7 +68,6 @@ class Client_c extends CI_Controller {
             'ville'=>$this->input->post('ville'),
             'password'=>$this->input->post('password')
         );
-
         if($this->form_validation->run() == False){
             $this->load->view('head_v');
             $this->load->view('clients/navClient_v');
