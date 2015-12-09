@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS user (
   password varchar(255) NOT NULL,
   login varchar(255) NOT NULL,
   nom varchar(255) NOT NULL,
+  prenom varchar(255) NOT NULL,
   code_postal varchar(255) NOT NULL,
   ville varchar(255) NOT NULL,
   adresse varchar(255) NOT NULL,
@@ -87,11 +88,11 @@ CREATE TABLE IF NOT EXISTS user (
 INSERT INTO user (id_user,login,password,email,valide,droit) VALUES
 (1, 'admin', 'admin', 'admin@gmail.com',1,2),
 (2, 'vendeur', 'vendeur', 'vendeur@gmail.com',1,2),
-(3, 'client', 'client', 'client@gmail.com',1,1),
 (4, 'client2', 'client2', 'client2@gmail.com',1,1),
 (5, 'client3', 'client3', 'client3@gmail.com',1,1);
 
-
+INSERT INTO user (id_user,login,password,email,valide,droit, prenom, nom) VALUES
+(3, 'client', 'client', 'client@gmail.com',1,1, 'Norbert', 'TRUC');
 
 
 CREATE TABLE IF NOT EXISTS commande (
