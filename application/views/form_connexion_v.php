@@ -9,7 +9,7 @@
         <input type="password" name="pass" value="<?=set_value('pass');?>" />
         <?=form_error('pass','<span class="error">',"</span>");?>
         <br>
-        <input type="submit" value="Connexion" />
+        <input class="round tiny button" type="submit" value="Connexion" />
         <?php if(isset($erreur))echo '<span class="error">'.$erreur."</span>";?>
         <?=form_close(); ?>
         <p><?=anchor('Users_c/inscription','Inscrivez vous!')?></p>

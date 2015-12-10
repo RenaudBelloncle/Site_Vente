@@ -27,7 +27,7 @@
 				<input name="photo"  type="text"  size="18" value="<?=set_value('photo');?>"/>
 				<?=form_error('photo');?>
 			</label>
-			<input type="submit" name="ajouterProduit" value="Creer"/>
+			<input class="round tiny button" type="submit" name="ajouterProduit" value="Creer"/>
 		</fieldset>
 	</div>
 </form>

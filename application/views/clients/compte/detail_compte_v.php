@@ -4,10 +4,10 @@
     <h1>Détails du compte</h1>
     <hr>
 
-    <div class="large-block-grid-3 medium-block-grid-2 large">
+    <div class="large-block-grid-3 medium-block-grid-2 large ">
         <h3>Informations personnelles</h3>
         <hr>
-                <li><div class="row">
+                <li><div class="row ">
                         <div class="panel clearfix">
                             <h5>Nom : <?=$user['nom']; ?> <?=$user['prenom']; ?><?php if($user['nom']==null && $user['prenom']==null):?> Non renseigné <?php endif?></h5><br>
                             <h5>Login : <?=$user['login']; ?> </h5><br>
@@ -15,6 +15,7 @@
                             <h5>Adresse : <?=$user['adresse']; ?><?php if($user['adresse']==null):?> Non renseigné <?php endif?></h5><br>
                             <h5>Code postal :<?=$user['code_postal']; ?><?php if($user['code_postal']==null):?> Non renseigné <?php endif?></h5><br>
                             <h5>Ville :<?=$user['ville']; ?><?php if($user['ville']==null):?> Non renseigné <?php endif?></h5><br>
+                            <h5>Mot de passe : <a href="<?=site_url("Client_c/modifierMdp");?>" >Modifier</a></h5><br>
                         </div>
                     </div>
                 </li>

@@ -66,7 +66,7 @@ class Client_c extends CI_Controller {
             'prenom'=>$this->input->post('prenom'),
             'adresse'=>$this->input->post('adresse'),
             'ville'=>$this->input->post('ville'),
-            'password'=>$this->input->post('password')
+            'password'=>md5($this->input->post('password'))
         );
         if($this->form_validation->run() == False){
             $this->load->view('head_v');
@@ -80,7 +80,7 @@ class Client_c extends CI_Controller {
                 'prenom'=>$this->input->post('prenom'),
                 'adresse'=>$this->input->post('adresse'),
                 'ville'=>$this->input->post('ville'),
-                'password'=>$this->input->post('password')
+                'password'=>md5($this->input->post('password'))
             );
             $this->load->view('clients/compte/modifier_compte_v',$donnees);
             $this->load->view('foot_v');
@@ -89,4 +89,48 @@ class Client_c extends CI_Controller {
             redirect('Client_c/afficherCompte');
         }
     }
+
+    public function check_mdp($password){
+        if ($this->Users_m->test_mdp($password, $this->session->userdata('id_user')) != TRUE) {
+            $this->form_validation->set_message('check_mdp', 'Mauvais mot de passe');
+            return FALSE;
+        } else return TRUE;
+    }
+
+    public function modifierMdp(){
+        $this->load->view('head_v');
+        $this->load->view('clients/navClient_v');
+        $donnees['user']=$this->Users_m->getUserById($this->session->userdata('id_user'));
+        $this->load->view('clients/compte/modifier_mdp_v',$donnees);
+        $this->load->view('foot_v');
+    }
+
+    public function validFormModifierMdp() {
+
+        $id = $this->input->post('id_user');
+        $donnees['user']= array(
+            'password'=>md5($this->input->post('password'))
+        );
+        $this->form_validation->set_rules('ancienPass','ancienPass','trim|required|min_length[2]|max_length[12]|callback_check_mdp');
+        $this->form_validation->set_rules('password','password','trim|required|matches[pass]');
+        $this->form_validation->set_rules('pass','pass','trim|required');
+        $this->form_validation->set_error_delimiters('<span class="error">','</span>');
+        $donnees['user']= array(
+            'password'=>md5($this->input->post('password'))
+        );
+        if($this->form_validation->run() == False){
+            $this->load->view('head_v');
+            $this->load->view('clients/navClient_v');
+            $donnees['user'] = array(
+                'id_user'=>$id,
+                'password'=>md5($this->input->post('password'))
+            );
+            $this->load->view('clients/compte/modifier_mdp_v',$donnees);
+            $this->load->view('foot_v');
+        } else {
+            $this->Users_m->updateCompte($id, $donnees);
+            redirect('Client_c/afficherCompte');
+        }
+    }
+
 }

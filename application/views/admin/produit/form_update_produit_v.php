@@ -28,7 +28,7 @@
 				<input name="photo"  type="text"  size="18" value="<?=set_value('photo',$photo);?>"/>
 				<?=form_error('photo');?>
 			</label>
-			<input type="submit" name="ModifierProduit" value="Modifier" />
+			<input class="round tiny button" type="submit" name="ModifierProduit" value="Modifier" />
 		</fieldset>
 	</div>
 </form>

@@ -8,7 +8,7 @@
         <h4>Votre panier est vide !</h4>
     <?php endif; ?>
     <?php if($panier != NULL): ?>
-        <table class="large-centered">
+        <table class="large-centered float-center">
             <caption><h3>Produits dans le Panier</h3></caption>
             <thead>
             <tr>

@@ -34,7 +34,7 @@
                 </tr>
                 <tbody>
             </table>
-            <input type="submit" name="Remplir le stock" value="Remplir le stock" />
+            <input class="round tiny button" type="submit" name="Remplir le stock" value="Remplir le stock" />
         </fieldset>
     </div>
 </form>

@@ -30,6 +30,15 @@ class Users_m extends CI_Model {
         else return false;
     }
 
+    public function test_mdp($password, $id_user) {
+        $sql = "SELECT password
+                FROM user
+                WHERE id_user=\"".$id_user."\";";
+        $query=$this->db->query($sql);
+        if($query->result_array()['0']['password'] == md5($password)) return true;
+        else return false;
+    }
+
     public function modif_email_mdp($email,$donnees) {
         $this->db->where("email", $email);
         $this->db->update("user", $donnees);

@@ -36,7 +36,7 @@ class Users_c extends CI_Controller {
         $this->form_validation->set_rules('pass','Mot de passe','trim|required');
         $donnees= array(
             'login'=>$this->input->post('login'),
-            'pass'=>$this->input->post('pass')
+            'pass'=>md5($this->input->post('pass'))
         );
         if($this->form_validation->run() == False){
             $this->load->view('head_v');
@@ -89,7 +89,7 @@ class Users_c extends CI_Controller {
         $donnees= array(
             'login'=>$this->input->post('login'),
             'email'=>$this->input->post('email'),
-            'pass'=>$this->input->post('pass')   // encryptage MD5 ou autre à faire
+            'pass'=>md5($this->input->post('pass'))   // encryptage MD5 ou autre à faire
         );
         if($this->form_validation->run() == False){
             $this->load->view('head_v');
