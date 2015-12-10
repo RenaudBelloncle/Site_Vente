@@ -34,6 +34,16 @@ class Produit_c extends CI_Controller {
         $this->load->view('foot_v');
     }
 
+    public function afficherProduits() {
+        $this->check_droit(0);
+        $this->load->view('head_v');
+        $this->load->view('nav_v');
+        $data['titre']="affichage du tableau produit";
+        $data['produit']=$this->Produit_m->getAllProduits();
+        $this->load->view('table_produit_v',$data);
+        $this->load->view('foot_v');
+    }
+
     public function afficherType($id_type){
         $this->check_droit(1);
         $this->load->view('head_v');
@@ -46,13 +56,25 @@ class Produit_c extends CI_Controller {
         $this->load->view('foot_v');
     }
 
-    public function afficherProduits() {
-        $this->load->view('head_v');
-        $this->load->view('nav_v');
-        $data['titre']="affichage du tableau produit";
-        $data['produit']=$this->Produit_m->getAllProduits();
-        $this->load->view('table_produit_v',$data);
-        $this->load->view('foot_v');
+    public function validerProduitSearchBar() {
+        //$this->check_droit(1);
+        $this->form_validation->set_rules('nom','nom','trim|required|min_length[1]');
+        $this->form_validation->set_error_delimiters('<span class="error">','</span>');
+        $nom = $this->input->post('nom');
+        if($this->form_validation->run() == False) {
+            redirect('Client_c');
+        } else {
+            $this->load->view('head_v');
+            $this->load->view('clients/navClient_v');
+            $data['titre']="affichage produits recherchés";
+            $data['produit'] = $this->Produit_m->getProduitSearchBar($nom);
+            $this->load->view('clients/produit/table_produit_v',$data);
+            $this->load->view('foot_v');
+        }
+    }
+
+    public function afficherProduitSearchBar($nom) {
+        //$this->check_droit(1);
     }
 
     public function infoProduitClient($id){
