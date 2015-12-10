@@ -39,7 +39,7 @@ class Produit_m extends CI_Model {
         $this->db->select('*');
         $this->db->from('produit p');
         $this->db->join('typeProduit t', 'p.id_type=t.id_type');
-        $this->db->like('nom',$nom);
+        $this->db->like('nom',$nom, 'after');
         $this->db->order_by('t.libelle', 'ASC');
         $this->db->order_by('p.nom', 'ASC');
         $query = $this->db->get();
