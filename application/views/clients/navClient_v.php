@@ -30,13 +30,16 @@
         <ul class="right">
             <li class="has-form">
                 <div class="row collapse">
-                <div class="large-8 small-9 columns">
-                    <input type="text" placeholder="Rechercher">
+                    <form method="post" action="<?=site_url("Produit_c/validerProduitSearchBar");?>">
+                        <input type="hidden" name="<?=$this->security->get_csrf_token_name(); ?>" value="<?=$this->security->get_csrf_hash();?>">
+                        <div class="large-8 small-9 columns">
+                            <input name="nom" type="text" placeholder="Rechercher"/>
+                        </div>
+                        <div class="large-4 small-3 columns">
+                            <input type="submit" class="success button expand" value="Valider"/>
+                        </div>
+                    </form>
                 </div>
-                <div class="large-4 small-3 columns">
-                    <a href="#" class="success button expand">Valider</a>
-                </div>
-                    </div>
             </li>
             <li  class="name"><h3 style="color:#FFFFFF; font-size : 10pt" >Bonjour
                     <?=$this->session->userdata('login')?></h3><li>

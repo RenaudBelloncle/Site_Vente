@@ -35,6 +35,17 @@ class Produit_m extends CI_Model {
         return $this->db->get_where('produit', array('id' => $id), 1, 0)->row_array();
     }
 
+    function getProduitSearchBar($nom) {
+        $this->db->select('*');
+        $this->db->from('produit p');
+        $this->db->join('typeProduit t', 'p.id_type=t.id_type');
+        $this->db->like('nom',$nom);
+        $this->db->order_by('t.libelle', 'ASC');
+        $this->db->order_by('p.nom', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function updateProduit($id, $donnees) {
         $this->db->where("id", $id);
         $this->db->update("produit", $donnees);
