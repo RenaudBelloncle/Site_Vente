@@ -1,4 +1,5 @@
-<nav class="top-bar" data-topbar role="navigation">
+<div class="sticky">
+    <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
         <li class="name">
             <h1><a href="<?=site_url('Admin_c');?>">Espace administration</a> </h1>
@@ -22,3 +23,4 @@
         </ul>
     </section>
 </nav>
+    </div>

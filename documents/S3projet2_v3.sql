@@ -45,25 +45,39 @@ CREATE TABLE IF NOT EXISTS produit (
 ) DEFAULT CHARSET=utf8 ;
 
 INSERT INTO produit (id,id_type,nom,prix,photo,dispo,stock, description) VALUES
-  (1,1, 'Catwoman','139.99','Figurine_Catwoman.jpg',0,0,'Je suis une description'),
-(2,1, 'Batman','89.99','Figurine_Batman.jpg',1,3,'Je suis une description'),
-(3,1, 'Joker','109.99','Figurine_Joker.jpg',1,3,'Je suis une description'),
-(4,1, 'Flash','79.99','Figurine_Flash.jpg',1,8,'Je suis une description'),
-(6,1, 'Rorschach','89.99','Figurine_Rorcha.jpg',1,2,'Je suis une description'),
-(7,1, 'Garrus','59.99','Figurine_Garrus.jpg',1,1,'Je suis une description'),
-(8,1, 'Tali','59.99','Figurine_Tali.jpg',1,1,'Je suis une description'),
-(9,1, 'Dark Vador','99.99','Figurine_DarkVador.jpg',1,3,'Je suis une description'),
-(10,1, 'Stormtrooper','95.99','Figurine_Stormtrooper.jpg',1,1,'Je suis une description'),
-(11,1, 'Bobba Fett','95.99','Figurine_BobbaFett.jpg',1,3,'Je suis une description'),
-(12,1, 'Albator','69.99','Figurine_Albator.jpg',1,5,'Je suis une description'),
-(13,2, 'Monokuma','30.50','Peluche_Monokuma.jpg',1,8,'Je suis une description'),
-(14,2, 'Pikachu','21.50','Peluche_Pikachu.jpg',1,7,'Je suis une description'),
-(15,2, 'Crocmou','23.50','Peluche_Crocmou.jpg',1,5,'Je suis une description'),
-(16,2, 'Gobelin','13.50','Peluche_Gobelin.jpg',1,5,'Je suis une description'),
-(17,3, 'Ari','20.00','Poster_Ari.jpg',1,20,'Je suis une description'),
-(18,3, 'DC Girls','40.00','Poster_DCGirls.jpg',1,12,'Je suis une description'),
-(19,3, 'Ezio','20.00','Poster_Ezio.jpg',1,20,'Je suis une description'),
-(20,3, 'Miku','20.00','Poster_Miku.jpg',1,20,'Je suis une description');
+  (1,1, 'Catwoman','139.99','Figurine_Catwoman.jpg',0,0,'Figurine PVC de 15 cm peinte à la main.<br><br>
+  Accessoires :<br><br> 2 paires de mains amovibles,<br><br> 2 queues, 2 set d arme.<br>'),
+(2,1, 'Batman','89.99','Figurine_Batman.jpg',1,3,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>cape amovible et déformable,<br><br> 3 sets d armes dont le batarang.'),
+(3,1, 'Joker','109.99','Figurine_Joker.jpg',1,3,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires :<br><br> 2 paires de mains,<br><br> couteaux de lancé, 2 têtes.'),
+(4,1, 'Flash','79.99','Figurine_Flash.jpg',1,8,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>4 types d éclairs (rapidités).'),
+(6,1, 'Rorschach','89.99','Figurine_Rorcha.jpg',1,2,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>pistolet 9 mm,<br><br> 3 visages.'),
+(7,1, 'Garrus','59.99','Figurine_Garrus.jpg',1,1,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>2 armes issues du jeu.<br>'),
+(8,1, 'Tali','59.99','Figurine_Tali.jpg',1,1,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>2 armes issues du jeu.<br>'),
+(9,1, 'Dark Vador','99.99','Figurine_DarkVador.jpg',1,3,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>2 lasers pour le sabre laser,<br><br> cape amovible et déformable.'),
+(10,1, 'Stormtrooper','95.99','Figurine_Stormtrooper.jpg',1,1,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>2 pistolets pour le sabre laser.'),
+(11,1, 'Bobba Fett','95.99','Figurine_BobbaFett.jpg',1,3,'Figurine PVC de 15 cm peinte à la main.<br><br>
+Accessoires : <br><br>2 pistolets pour le sabre laser.'),
+(12,1, 'Albator','69.99','Figurine_Albator.jpg',1,5,'Figurine PVC de 15 cm peinte à la main.'),
+(13,2, 'Monokuma','30.50','Peluche_Monokuma.jpg',1,8,'Peluche de 30 cm de hauteur. <br><br>
+Coton synthétique'),
+(14,2, 'Pikachu','21.50','Peluche_Pikachu.jpg',1,7,'Peluche de 30 cm de hauteur. <br><br>
+Coton synthétique'),
+(15,2, 'Crocmou','23.50','Peluche_Crocmou.jpg',1,5,'Peluche de 30 cm de hauteur. <br><br>
+Coton synthétique'),
+(16,2, 'Gobelin','13.50','Peluche_Gobelin.jpg',1,5,'Peluche de 30 cm de hauteur. <br><br>
+Coton synthétique'),
+(17,3, 'Ari','20.00','Poster_Ari.jpg',1,20,'Poster de 100 cm *h et 50 cm * l'),
+(18,3, 'DC Girls','40.00','Poster_DCGirls.jpg',1,12,'Poster de 100 cm *h et 50 cm * l'),
+(19,3, 'Ezio','20.00','Poster_Ezio.jpg',1,20,'Poster de 100 cm *h et 50 cm * l'),
+(20,3, 'Miku','20.00','Poster_Miku.jpg',1,20,'Poster de 100 cm *h et 50 cm * l');
 
 
 -- --------------------------------------------------------

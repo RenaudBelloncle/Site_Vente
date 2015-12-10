@@ -1,3 +1,4 @@
+<div class="sticky">
 <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
         <li class="name">
@@ -24,12 +25,23 @@
                     <li><a href="<?=site_url("Client_c/modifierCompte");?>">Modifier mes Coordonnées</a></li>
                 </ul>
             </li>
-
         </ul>
+
         <ul class="right">
-            <li class="name"><h1>Bonjour
-                    <?=$this->session->userdata('login')?></h1><li>
+            <li class="has-form">
+                <div class="row collapse">
+                <div class="large-8 small-9 columns">
+                    <input type="text" placeholder="Rechercher">
+                </div>
+                <div class="large-4 small-3 columns">
+                    <a href="#" class="success button expand">Valider</a>
+                </div>
+                    </div>
+            </li>
+            <li  class="name"><h3 style="color:#FFFFFF; font-size : 10pt" >Bonjour
+                    <?=$this->session->userdata('login')?></h3><li>
             <li><a href="<?=site_url('users_c/deconnexion');?>">Déconnexion</a></li>
         </ul>
     </section>
 </nav>
+</div>

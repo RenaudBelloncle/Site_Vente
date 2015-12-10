@@ -35,17 +35,17 @@
                 <?= form_error('login');?>
             </label>
             <label>Mot de passe
-                <input name="password"  type="text"  size="18" 	value="<?=set_value('password',$user['password']);?>"/>
-                <?= form_error('password');?>
-            </label>
+            <input name="password"  type="password"  size="18" 	value="<?=set_value('password',$user['password']);?>"/>
+            <?= form_error('password');?>
+             </label>
             <label>Email
                 <input name="email"  type="text"  size="18" 	value="<?=set_value('email',$user['email']);?>"/>
                 <?= form_error('email');?>
             </label>
             <br><br>
-            Les informations suivies de * ne sont pas obligatoires.
+            <input class="round tiny button" type="submit" name="ModifierCompte" value="Modifier" />
             <br><br>
-            <input type="submit" name="ModifierCompte" value="Modifier" />
+            Les informations suivies de * ne sont pas obligatoires.
         </fieldset>
     </div>
 </form>
