@@ -7,7 +7,7 @@ class Users_c extends CI_Controller {
         $this->load->database();
         $this->load->helper(array('form','url','text','string'));
         $this->load->library(array('session','form_validation','email'));
-        $this->load->model('Users_m');
+        $this->load->model(array('Users_m','Panier_m'));
     }
 
     public function check_droit(){
@@ -45,8 +45,17 @@ class Users_c extends CI_Controller {
             $this->load->view('foot_v');
         } else {
             $donnees_session = array();
-            if(($donnees_session=$this->Users_m->verif_connexion($donnees)) != False) {
+            if(($donnees_session = $this->Users_m->verif_connexion($donnees)) != False) {
                 $this->session->set_userdata($donnees_session);
+                $panier = $this->Panier_m->getPanier($this->session->userdata('id_user'));
+                $date = date("Y-m-d H:i:s");
+                $jour = intval($date['8'].$date['9']) - 1;
+                $date['8'] = floor($jour/10);
+                $date['9'] = $jour%10;
+                foreach ($panier as $value) {
+                    if ($value->dateAjoutPanier > $date) redirect('Users_c');
+                }
+                $this->Panier_m->deletePanier($this->session->userdata('id_user'));
                 redirect('Users_c');
             } else {
                 $donnees['erreur']="mot de passe ou login incorrect";
